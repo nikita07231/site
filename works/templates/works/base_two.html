@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Комплекс автомойка</title>
+    <link href="{% static 'images/favicon.ico' %}" rel="icon">
+    <link rel="stylesheet" href="{% static 'style/style2.css' %}">
+</head>
+<body>
+<header>
+    <ul class="menu">
+        <li><a href="{% url 'home-page' %}">Главная</a></li>
+        <li><a href="{% url 'add-service' %}">Добавить услугу в расписание</a></li>
+        <li><a href="{% url 'add-work' %}">Добавить выполненную работу</a></li>
+    </ul>
+</header>
+{% block content %}
+{% endblock %}
+</body>
+</html>

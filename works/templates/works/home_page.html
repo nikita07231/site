@@ -1,0 +1,39 @@
+{% extends 'works/base_two.html' %}
+{% load static %}
+{% block content %}
+
+<div class="main-container">
+  <div class="heading">
+    <h1 class="heading__title">Расписание:</h1>
+  </div>
+  {% for s in ser %}
+  <div class="cards">
+    <div class="card card-1">
+      <p class="icon"><img src="{% static 'images/clock.svg' %}" alt="часы">{{ s.time }}  <img src="{% static 'images/calendar.svg' %}" alt="">{{ s.data|date:"d.m.Y" }}</p>
+
+
+      <h2 class="card__title">{{ s.instruction }}</h2>
+      <p class="card__apply">
+        <a class="card__link" href="{% url 'delete-service' s.id  %}">Удалить <i class="fas fa-arrow-right"></i></a>
+        <a class="card__link" href="{% url 'update-service' s.id  %}">Изменить <i class="fas fa-arrow-right"></i></a>
+      </p>
+    </div>
+
+  </div>
+  {% endfor %}
+</div>
+
+<h1>Список выполненных работ:</h1>
+<section class="page-contain">
+{% for w in work %}
+  <a href="#" class="data-card">
+    <h3>{{ w.price }}</h3>
+    <h4>{{ w.instruction }}</h4>
+    <h4>{{ w.time }}</h4>
+
+  </a>
+  {% endfor %}
+  <button class="button" style="margin-top: 50px"><a href="{% url 'result' %}">Завершить</a></button>
+</section>
+
+{% endblock %}
